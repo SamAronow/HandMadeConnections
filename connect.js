@@ -3,6 +3,7 @@ var groups
 var groupNames;
 var queryParams = new URLSearchParams(window.location.search);
 puzName = queryParams.get('data');
+document.title=puzName
 read("/Puzzles/"+puzName)
   .then(function(data) {
     groups = []
