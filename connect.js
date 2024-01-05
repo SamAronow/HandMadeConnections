@@ -62,6 +62,7 @@ function handleBoardClick(event) {
             if(clicked.length==4){
                 return;
             }
+            console.log(but.style.backgroundcolor)
             if(but.style.backgroundcolor=='#FDDA0D' |but.style.backgroundcolor=='#50C878' |
              but.style.backgroundcolor=='#6495ED' |but.style.backgroundcolor=='#BF40BF'){
                 return
