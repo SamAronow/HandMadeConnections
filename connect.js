@@ -62,8 +62,13 @@ function handleBoardClick(event) {
             if(clicked.length==4){
                 return;
             }
-            clicked.push(buttonId)
+            if(but.style.backgroundcolor=='#FDDA0D' |but.style.backgroundcolor=='#50C878' |
+             but.style.backgroundcolor=='#6495ED' |but.style.backgroundcolor=='#BF40BF'){
+                return
+            }
 
+            clicked.push(buttonId)
+        
             // Change the background color of the button
             but.style.backgroundColor = '#808080'; 
         }
