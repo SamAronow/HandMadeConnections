@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create Puzzle</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<style>
+/* In your styling.css file */
+
+
+
+table {
+    width: 300px;
+    height: 300px;
+    border-collapse: collapse;
+    border: 2px solid black;
+    table-layout: fixed; /* Ensures uniform cell size */
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100px; /* Fill the width of the cell */
+    height: 20px;   
+}
+
+.tbut {
+    width: 90px; /* Fill the width of the cell */
+    height: 20px; /* Fill the height of the cell */
+    display: block; /* Adjusting display property */
+    background-color: #DCDCDC;
+}
+
+#submit {
+    width:100px;
+    height:30px;
+    right: 30px;
+}
+#error-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .name{
+    width:80px;
+  }
+</style>
+<body>
+    <div id="error-message"></div>
+    <label>Puzzle Name: </label>
+    <input id = name></input>
+    <br>
+    <br>
+    <table id = "table">
+        <tr>
+            <td><label>Yellow Group: </label>
+            <input id ="yellow" class = "name"></input>
+        </td>
+            <td><input id="inp00" class = "tbut"></input></td>
+            <td><input id="inp01" class = "tbut"></input></td>
+            <td><input id="inp02" class = "tbut"></input></td>
+            <td><input id="inp03" class = "tbut"></input></td>
+            
+        </tr>
+        <tr>
+            <td><label>Green Group: </label>
+                <input id ="yellow" class = "name"></input>
+            </td>
+            <td><input id="inp10" class = "tbut"></input></td>
+            <td><input id="inp11" class = "tbut"></input></td>
+            <td><input id="inp12" class = "tbut"></input></td>
+            <td><input id="inp13" class = "tbut"></input></td>
+        </tr>
+        <tr>
+            <td><label>Blue Group: </label>
+                <input id ="yellow" class = "name"></input>
+            </td>
+            <td><input id="inp20" class = "tbut"></input></td>
+            <td><input id="inp21" class = "tbut"></input></td>
+            <td><input id="inp22" class = "tbut"></input></td>
+            <td><input id="inp23" class = "tbut"></input></td>
+        </tr>
+        <tr>
+            <td><label>Purple Group: </label>
+                <input id ="yellow" class = "name"></input>
+            </td>
+            <td><input id="inp30" class = "tbut"></input></td>
+            <td><input id="inp31" class = "tbut"></input></td>
+            <td><input id="inp32" class = "tbut"></input></td>
+            <td><input id="inp33" class = "tbut"></input></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <button id = "submit" onclick="submit()">Submit</button>
+</body>
+<script src = "createPuzz.js"></script>
+</html>

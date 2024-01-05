@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Family Connections</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<link rel="stylesheet" href="connection.css">
+<body>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h2>You Win!</h2>
+          <h3 id="guessDisplay">Guesses: 0</h3>
+          <div id = "guessList"></div>
+
+        </div>
+      </div>
+    <div id="error-message"></div>
+    <table id = "board">
+    <tr>
+        <td><button id="btn00" class = "tbut"></button></td>
+        <td><button id="btn01" class = "tbut"></button></td>
+        <td><button id="btn02" class = "tbut"></button></td>
+        <td><button id="btn03" class = "tbut"></button></td>
+    </tr>
+    <tr>
+        <td><button id="btn10" class = "tbut"></button></td>
+        <td><button id="btn11" class = "tbut"></button></td>
+        <td><button id="btn12" class = "tbut"></button></td>
+        <td><button id="btn13" class = "tbut"></button></td>
+    </tr>
+    <tr>
+        <td><button id="btn20" class = "tbut"></button></td>
+        <td><button id="btn21" class = "tbut"></button></td>
+        <td><button id="btn22" class = "tbut"></button></td>
+        <td><button id="btn23" class = "tbut"></button></td>
+    </tr>
+    <tr>
+        <td><button id="btn30" class = "tbut"></button></td>
+        <td><button id="btn31" class = "tbut"></button></td>
+        <td><button id="btn32" class = "tbut"></button></td>
+        <td><button id="btn33" class = "tbut"></button></td>
+    </tr>
+</table>
+
+<button id="submit" onclick = "submit()">Submit</button>
+<label id = "lives">Errors: 0 </label>
+<table id ="cats">
+    <tr><td class ="ctd">?</td></tr>
+    <tr><td class ="ctd">?</td></tr>
+    <tr><td class ="ctd">?</td></tr>
+    <tr><td class ="ctd">?</td></tr>
+</table>
+
+
+</body>
+<script src = "createPuzz.js"></script>
+<script src = "connect.js"></script>
+</html>

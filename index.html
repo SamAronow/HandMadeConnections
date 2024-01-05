@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src = "createPuzz.js"></script>
+</head>
+<style>
+#create{
+    top: 40%;
+    left: 40%;
+    height: 30px;
+    width:130px;
+}
+.puzName{
+    top: 40%;
+    left: 40%;
+    height: 30px;
+    width:130px;
+}
+</style>
+
+<body>
+<button id = "create" onclick="create()">Create</button>
+<br>
+<br>
+<div id = "gameContainer">
+<label>Play Existing Games</label>
+<br>
+<br>
+
+</div>
+</body>
+<script>
+    var puzzles
+    var puzzleNames=[]
+    read("/Puzzles")
+  .then(function(data) {
+    puzzles = data; // Store the value in the runs variable
+    for (let key in puzzles) {
+        puzzleNames.push(key)
+    }
+    initialize()
+  })
+  .catch(function(error) {
+    console.error("Error:", error);
+  });
+  
+ function initialize(){
+    for (var i=0; i<puzzleNames.length; i++){
+        let newButton = document.createElement('button');
+        newButton.textContent = puzzleNames[i];
+        newButton.className="puzName"
+        newButton.onclick = function() {
+            window.location.href = 'connections.html?data=' + encodeURIComponent(newButton.textContent);
+        };
+        let lineBreak = document.createElement('br');
+        let lineBreak2 = document.createElement('br');
+
+         let container = document.getElementById('gameContainer');
+         
+        container.appendChild(newButton);
+        container.appendChild(lineBreak);
+        container.appendChild(lineBreak2);
+    }
+ }
+
+ function create(){
+    window.location.href = 'create.html'
+ }
+   // window.location.href = 'index.html'
+</script>
+
+</html>
