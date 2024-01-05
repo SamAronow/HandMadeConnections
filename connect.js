@@ -201,6 +201,7 @@ function makeBoard(numEach,label){
     }
 }
 
+
 function openPopup() {
     document.getElementById("popup").style.display = "block";
     document.getElementById("guessDisplay").innerHTML="Wrong Guesses: "+numWrong
