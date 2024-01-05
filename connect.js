@@ -28,8 +28,6 @@ var buttons
 var catTable
 var guesses=[]
   function initialize(){
-    console.log(groups)
-    console.log(groupNames)
     activeWords= [].concat(...groups);
 
     clicked = []
@@ -62,11 +60,11 @@ function handleBoardClick(event) {
             if(clicked.length==4){
                 return;
             }
-            const computedStyle = window.getComputedStyle(button);
+            const computedStyle = window.getComputedStyle(but);
             const backgroundColor = computedStyle.backgroundColor;
-            console.log(backgroundColor)
-            if(backgroundColor=='#FDDA0D' | backgroundColor=='#50C878' |
-            backgroundColor=='#6495ED' | backgroundColor=='#BF40BF'){
+            var color = rgbToHex(backgroundColor).toString()
+            color=color.toUpperCase()
+            if(color=='#FDDA0D' | color=='#50C878' | color=='#6495ED' | color=='#BF40BF'){
                 return
             }
 
@@ -83,6 +81,13 @@ function handleBoardClick(event) {
         // You can add specific actions based on the button clicked
     }
 }
+
+function rgbToHex(rgb) {
+    // Convert "rgb(80, 200, 120)" to ["80", "200", "120"]
+    const values = rgb.match(/\d+/g);
+    // Convert each value to hexadecimal and join them
+    return `#${values.map(val => parseInt(val, 10).toString(16).padStart(2, '0')).join('')}`;
+  }
 
 function submit(){
     var numEach=[0,0,0,0]
