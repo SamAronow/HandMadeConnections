@@ -83,6 +83,8 @@ function submit(){
   groups.push(groupNames)
   console.log(groups)
   write("/Puzzles/"+document.getElementById("name").value,groups)
+  write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
+  write("/Puzzles/"+document.getElementById("name").value+'/Atttempts',0)
   printError("Sucessfully Made Puzzle")
 setTimeout(returnHome,2000)
 }
