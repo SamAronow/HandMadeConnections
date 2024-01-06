@@ -56,6 +56,9 @@
        if(puzzleNames[i]=="zoe"){
             continue
        }
+       if (puzzleNames[i].substring(0,3)=="NYT"){
+        continue
+       }
         let newButton = document.createElement('button');
         newButton.textContent = puzzleNames[i];
         newButton.className="puzName"
