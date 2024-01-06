@@ -210,7 +210,6 @@ function makeBoard(numEach,label){
 function openPopup() {
     document.getElementById("popup").style.display = "block";
     document.getElementById("guessDisplay").innerHTML="Wrong Guesses: "+numWrong
-    tot_attempts-=4
     tot_attempts+=numWrong
     tot_wins++
     var avg = 1.0*tot_attempts/tot_wins
