@@ -103,7 +103,7 @@ td, th {
         gameButton.textContent = puzzleNames[i];
         gameButton.className="puzName"
         gameButton.onclick = function() {
-            window.location.href = 'connections.html?data=' + encodeURIComponent(newButton.textContent);
+            window.location.href = 'connections.html?data=' + encodeURIComponent(gameButton.textContent);
         };
 
         cell1.appendChild(gameButton);
