@@ -1,6 +1,8 @@
 var puzName;
 var groups
 var groupNames;
+var tot_wins
+var tot_attempts
 var queryParams = new URLSearchParams(window.location.search);
 puzName = queryParams.get('data');
 document.title=puzName
@@ -12,11 +14,14 @@ read("/Puzzles/"+puzName)
     groups.push(data[2])
     groups.push(data[3])
     groupNames=data[4]
+    tot_wins=data.Wins
+    tot_attempts=data.Attempts
     initialize()
   })
   .catch(function(error) {
     console.error("Error:", error);
   });
+
 
 var clicked;
 var numGroups
@@ -205,6 +210,22 @@ function makeBoard(numEach,label){
 function openPopup() {
     document.getElementById("popup").style.display = "block";
     document.getElementById("guessDisplay").innerHTML="Wrong Guesses: "+numWrong
+    tot_attempts-=4
+    tot_attempts+=numWrong
+    tot_wins++
+    var avg = 1.0*tot_attempts/tot_wins
+    write('/Puzzles/'+puzName+'/Attempts',tot_attempts)
+    write('/Puzzles/'+puzName+'/Wins',tot_wins)
+    let container = document.getElementById('stats');
+    let label1 =document.createElement('label')
+    let label2 = document.createElement('label')
+    let lnbreak = document.createElement('br')
+    label1.innerHTML="Total Puzzle Wins: "+tot_wins
+    label2.innerHTML="Average Puzzle Wrong Guesses: "+avg
+    container.appendChild(label1)
+    container.appendChild(lnbreak)
+    container.appendChild(lnbreak)
+    container.appendChild(label2)
   }
   
   function closePopup() {
