@@ -82,6 +82,9 @@ function submit(){
   }
   groups.push(groupNames)
   console.log(groups)
+if (document.getElementById("name").value==""){
+    return
+  }
   write("/Puzzles/"+document.getElementById("name").value,groups)
   write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
   write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
