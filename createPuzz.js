@@ -101,6 +101,7 @@ function submit(){
     console.log("hi"+doneCount)
     console.log("hi2"+keepGoing)
   }
+  doneCount=0
   printError("Sucessfully Made Puzzle")
 //setTimeout(returnHome,4000)
 }
