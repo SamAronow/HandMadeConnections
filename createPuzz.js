@@ -18,10 +18,10 @@ function write(path,value){
     database.ref(path).set(value, function(error) {
         if (error) {
           console.error("Error updating count:", error);
-          return False
+          return false
         } else {
           console.log("Data updated successfully!");
-          return True
+          return true
         }
       });
 }
