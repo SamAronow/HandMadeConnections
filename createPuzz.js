@@ -20,9 +20,9 @@ function write(path,value){
           console.error("Error updating count:", error);
         } else {
           console.log("Data updated successfully!");
-          doneCount++
         }
       });
+      doneCount++
 }
 
 
