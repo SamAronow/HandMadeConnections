@@ -13,15 +13,14 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
-
+doneCount=0
 function write(path,value){
     database.ref(path).set(value, function(error) {
         if (error) {
           console.error("Error updating count:", error);
-          return false
         } else {
           console.log("Data updated successfully!");
-          return true
+          doneCount++
         }
       });
 }
@@ -87,13 +86,14 @@ function submit(){
   if (document.getElementById("name").value==""){
     return
   }
-  if (write("/Puzzles/"+document.getElementById("name").value,groups)){
-    if (write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)){
-      if (write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)){
-        printError("Sucessfully Made Puzzle")
-      }
-    }
+  waiting =true
+  write("/Puzzles/"+document.getElementById("name").value,groups)
+  write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
+  write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
+  while (doneCount!=3){
+    
   }
+  printError("Sucessfully Made Puzzle")
 //setTimeout(returnHome,4000)
 }
 
