@@ -18,8 +18,10 @@ function write(path,value){
     database.ref(path).set(value, function(error) {
         if (error) {
           console.error("Error updating count:", error);
+          return False
         } else {
           console.log("Data updated successfully!");
+          return True
         }
       });
 }
@@ -82,14 +84,17 @@ function submit(){
   }
   groups.push(groupNames)
   console.log(groups)
-if (document.getElementById("name").value==""){
+  if (document.getElementById("name").value==""){
     return
   }
-  write("/Puzzles/"+document.getElementById("name").value,groups)
-  write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
-  write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
-  printError("Sucessfully Made Puzzle")
-//setTimeout(returnHome,2000)
+  if (write("/Puzzles/"+document.getElementById("name").value,groups)){
+    if (write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)){
+      if (write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)){
+        printError("Sucessfully Made Puzzle")
+      }
+    }
+  }
+//setTimeout(returnHome,4000)
 }
 
 function returnHome(){
