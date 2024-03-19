@@ -89,7 +89,7 @@ if (document.getElementById("name").value==""){
   write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
   write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
   printError("Sucessfully Made Puzzle")
-setTimeout(returnHome,2000)
+//setTimeout(returnHome,2000)
 }
 
 function returnHome(){
