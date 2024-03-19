@@ -98,12 +98,11 @@ function submit(){
     if (doneCount==3 || !keepGoing){
       break
     }
-    console.log("hi"+doneCount)
-    console.log("hi2"+keepGoing)
+
   }
   if (doneCount==3){
     printError("Sucessfully Made Puzzle")
-    returnHome()
+    setTimeout(returnHome,5000)
   }
  else{
   printError("Connection Failed try again")
