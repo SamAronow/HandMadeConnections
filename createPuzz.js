@@ -90,8 +90,12 @@ function submit(){
   write("/Puzzles/"+document.getElementById("name").value,groups)
   write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
   write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
-  while (doneCount!=3){
-    
+  console.log("hi")
+  while (true){
+    if (doneCount==3){
+      break
+    }
+    console.log(doneCount)
   }
   printError("Sucessfully Made Puzzle")
 //setTimeout(returnHome,4000)
