@@ -90,12 +90,16 @@ function submit(){
   write("/Puzzles/"+document.getElementById("name").value,groups)
   write("/Puzzles/"+document.getElementById("name").value+'/Wins',0)
   write("/Puzzles/"+document.getElementById("name").value+'/Attempts',0)
-  console.log("hi")
+  var keepGoing = true;
+  setTimeout(function() {
+      keepGoing = false;
+  }, 5000);
   while (true){
-    if (doneCount==3){
+    if (doneCount==3 || !keepGoing){
       break
     }
-    console.log(doneCount)
+    console.log("hi"+doneCount)
+    console.log("hi2"+keepGoing)
   }
   printError("Sucessfully Made Puzzle")
 //setTimeout(returnHome,4000)
