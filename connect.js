@@ -115,6 +115,9 @@ function rgbToHex(rgb) {
 function submit(){
     var numEach=[0,0,0,0]
     if (clicked.length!=4){
+        if (numGroups==4){
+            return
+        }
         printError("Not Enough Words Selected")
         return;
     }
@@ -223,9 +226,11 @@ function makeBoard(numEach, label) {
     mergeDiv.appendChild(wordLabel)// Or use a specific container like document.getElementById('container')
     mergeCell.appendChild(mergeDiv)
     row.appendChild(mergeCell);
-    mergeCell.style.height = '100%';
     mergeDiv.style.borderRadius='10px'
-    mergeDiv.style.height = '100%';
+    if (!isPortrait){
+        mergeCell.style.height = '100%';
+        mergeDiv.style.height = '100%';
+    }
     width=table.rows[3].cells[0].offsetWidth;
     if (numGroups==4 && !isPortrait){
         table.rows[0].cells[0].style.width=width*4+'px'
