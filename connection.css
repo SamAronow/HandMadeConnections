@@ -112,7 +112,7 @@ td {
     }
 
     #board {
-        width: 400px; /* Make board fit well in portrait mode */
+        width: 350px; /* Make board fit well in portrait mode */
         height: auto;
     }
 
