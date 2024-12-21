@@ -49,12 +49,10 @@ var guessString="My Results For "+puzName+"\n"
     if (isPortrait){
         table.addEventListener('touchend', handleBoardClick);
         const width = window.innerWidth;
-        printError("newm")
         //board.style.width='200px'
         //board.style.height='200px'
     }
     else{
-        printError("newl")
        // board.style.width='600px'
         //board.style.height='600px'
         table.addEventListener('click', handleBoardClick);
