@@ -239,7 +239,7 @@ function openPopup() {
     tot_wins++
     // Create the button
     let button = document.createElement('button');
-    button.innerHTML = 'Copy to Clipboard';
+    button.innerHTML = 'Share Results';
 
     // Add a click event listener
     button.addEventListener('click', function() {
@@ -248,6 +248,9 @@ function openPopup() {
     
     // Use the Clipboard API
     navigator.clipboard.writeText(guessString)
+    .then(() => {
+        printError('Results Copied To Clipboard');
+    })
         .catch(err => {
             printError("Failed to copy text: ");
         });
