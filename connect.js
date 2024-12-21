@@ -45,6 +45,7 @@ var guessString="My Results For "+puzName+"\n"
     table = document.getElementById('board');
     //catTable = document.getElementById('cats')
     table.addEventListener('click', handleBoardClick);
+    table.addEventListener('touchstart', handleBoardClick);
     activeWords=shuffleArray(activeWords)
     buttons = table.getElementsByTagName('button');
     for (let i = 0; i < buttons.length-numGroups*4; i++) {
@@ -246,6 +247,16 @@ function openPopup() {
             printError("Failed to copy text: ");
         });
     });
+    button.addEventListener('touchstart', function() {
+        // String to copy
+        let stringToCopy = 'This is the string to copy!';
+        
+        // Use the Clipboard API
+        navigator.clipboard.writeText(guessString)
+            .catch(err => {
+                printError("Failed to copy text: ");
+            });
+        });
 
 // Add the button to the container
     container.appendChild(button);
