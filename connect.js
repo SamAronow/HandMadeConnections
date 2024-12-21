@@ -34,6 +34,7 @@ var buttons
 var catTable
 var guesses=[]
 var guessString="My Results For "+puzName+"\n"
+const isPortrait = window.matchMedia("(orientation: portrait)").matches;
   function initialize(){
     activeWords= [].concat(...groups);
 
@@ -44,7 +45,6 @@ var guessString="My Results For "+puzName+"\n"
 
     table = document.getElementById('board');
     //catTable = document.getElementById('cats')
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
     const game = document.getElementById('game');
     if (isPortrait){
         let submitButton = document.getElementById('submit');
@@ -227,7 +227,7 @@ function makeBoard(numEach, label) {
     mergeDiv.style.borderRadius='10px'
     mergeDiv.style.height = '100%';
     width=table.rows[3].cells[0].offsetWidth;
-    if (numGroups==4){
+    if (numGroups==4 && !isPortrait){
         table.rows[0].cells[0].style.width=width*4+'px'
         table.rows[1].cells[0].style.width=width*4+'px'
         table.rows[2].cells[0].style.width=width*4+'px'
