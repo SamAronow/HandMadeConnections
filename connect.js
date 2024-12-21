@@ -43,7 +43,7 @@ var guessString="My Results For "+puzName+"\n"
     liveCounter= document.getElementById("lives")
 
     table = document.getElementById('board');
-    catTable = document.getElementById('cats')
+    //catTable = document.getElementById('cats')
     table.addEventListener('click', handleBoardClick);
     activeWords=shuffleArray(activeWords)
     buttons = table.getElementsByTagName('button');
@@ -191,29 +191,29 @@ function makeBoard(numEach,label){
     
     for (var i=0; i<4; i++){
         buttons[4*(numGroups-1)+i].textContent=words[i]
-        let cols = catTable.getElementsByTagName('td');
+        //let cols = catTable.getElementsByTagName('td');
         if (numEach[0]==4){
             buttons[4*(numGroups-1)+i].style.backgroundColor='#FDDA0D';
-            cols[numGroups-1].style.backgroundColor='#FDDA0D'
-            cols[numGroups-1].innerHTML=groupNames[0]
+            //cols[numGroups-1].style.backgroundColor='#FDDA0D'
+            //cols[numGroups-1].innerHTML=groupNames[0]
             label.style.color='#FDDA0D'
         }
         if (numEach[1]==4){
             buttons[4*(numGroups-1)+i].style.backgroundColor='#50C878';
-            cols[numGroups-1].style.backgroundColor='#50C878'
-            cols[numGroups-1].innerHTML=groupNames[1]
+            //cols[numGroups-1].style.backgroundColor='#50C878'
+            //cols[numGroups-1].innerHTML=groupNames[1]
             label.style.color='#50C878'
         }
         if (numEach[2]==4){
             buttons[4*(numGroups-1)+i].style.backgroundColor='#6495ED';
-            cols[numGroups-1].style.backgroundColor='#6495ED'
-            cols[numGroups-1].innerHTML=groupNames[2]
+            //cols[numGroups-1].style.backgroundColor='#6495ED'
+            //cols[numGroups-1].innerHTML=groupNames[2]
             label.style.color='#6495ED'
         }
         if (numEach[3]==4){
             buttons[4*(numGroups-1)+i].style.backgroundColor='#BF40BF';
-            cols[numGroups-1].style.backgroundColor='#BF40BF'
-            cols[numGroups-1].innerHTML=groupNames[3]
+            //cols[numGroups-1].style.backgroundColor='#BF40BF'
+            //cols[numGroups-1].innerHTML=groupNames[3]
             label.style.color='#BF40BF'
         }
     }
