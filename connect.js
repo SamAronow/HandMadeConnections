@@ -47,6 +47,9 @@ var guessString="My Results For "+puzName+"\n"
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
     const board = document.getElementById('board');
     if (isPortrait){
+        const submitButton = document.getElementById('submit');
+        submitButton.onclick = null;
+        submitButton.addEventListener('touchend', submit);
         table.addEventListener('touchend', handleBoardClick);
         const width = window.innerWidth;
         //board.style.width='200px'
