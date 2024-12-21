@@ -46,7 +46,7 @@ var guessString="My Results For "+puzName+"\n"
     //catTable = document.getElementById('cats')
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
     if (isPortrait){
-        table.addEventListener('touchstart', handleBoardClick);
+        table.addEventListener('touchend', handleBoardClick);
     }
     else{
         table.addEventListener('click', handleBoardClick);
