@@ -48,6 +48,7 @@ td {
     height: 130px; /* Fill the height of the cell */
     display: block; /* Adjusting display property */
     background-color: #DCDCDC;
+    border-radius:5px
 }
 
 #submit {
@@ -103,3 +104,35 @@ td {
     cursor: pointer;
   }
   
+
+  /* Portrait mode styles */
+@media (orientation: portrait) {
+    body {
+        font-size: 16px;  /* Adjust font size for portrait */
+    }
+
+    #board {
+        width: 80%; /* Make board fit well in portrait mode */
+        height: auto;
+    }
+
+    .tbut {
+        width: 50px;  /* Adjust button size for portrait */
+        height: 50px;
+        color: black
+    }
+
+    #submit {
+       color: black
+    }
+
+    #lives {
+        font-size: 20px;  /* Adjust font size for lives */
+    }
+
+    /* Make popup more compact in portrait mode */
+    .popup-content {
+        width: 80%;
+        padding: 10px;
+    }
+}
