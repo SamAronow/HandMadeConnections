@@ -10,17 +10,19 @@ body {
 
 #board {
     border-collapse: collapse;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     table-layout: fixed; /* Ensures uniform cell size */
 }
+/*
 #cats{
     display: none;
     width: 30px;
     height: 100px;
     border-collapse: collapse;
     border: 2px solid black;
-    table-layout: fixed; /* Ensures uniform cell size */
+    table-layout: fixed; 
 }
+*/
 .ctd{
     border: 1px solid black;
     padding: 10px;
@@ -32,7 +34,7 @@ body {
 }
 
 td {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -110,14 +112,15 @@ td {
     }
 
 
+
     .tbut {
-        width: 75px;  /* Adjust button size for portrait */
-        height: 75px;
+        width: 70px;  /* Adjust button size for portrait */
+        height: 70px;
         color: black
     }
     td{
-        width: 75px;  /* Adjust button size for portrait */
-        height: 75px;
+        width: 70px;  /* Adjust button size for portrait */
+        height: 70px;
     }
 
     #submit {

@@ -45,15 +45,16 @@ var guessString="My Results For "+puzName+"\n"
     table = document.getElementById('board');
     //catTable = document.getElementById('cats')
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-    const board = document.getElementById('board');
+    const game = document.getElementById('game');
     if (isPortrait){
         const submitButton = document.getElementById('submit');
         submitButton.onclick = null;
-        submitButton.addEventListener('touchend', submit);
-        table.addEventListener('touchend', handleBoardClick);
+        submitButton.addEventListener('click', submit);
+        table.addEventListener('click', handleBoardClick);
         const width = window.innerWidth;
-        //board.style.width='200px'
-        //board.style.height='200px'
+        //game.style.width=width+'px'
+        //game.style.height=width+'px'
+        printError(width+"")
     }
     else{
        // board.style.width='600px'
@@ -196,48 +197,51 @@ function shuffleArray(array) {
     return array;
 }
 
+function makeBoard(numEach, label) {
+    activeWords=shuffleArray(activeWords)
+    table = document.getElementById('board')
+    colors=['#FDDA0D','#50C878','#6495ED','#BF40BF']
+    cat = numEach.indexOf(4)
+    const row = table.rows[numGroups-1]; // Get the first row of the table
 
-function makeBoard(numEach,label){
-    let buttons = table.getElementsByTagName('button');
-    words=[]
-    for (var i=0; i<4;i++){
-        words.push(document.getElementById(clicked[i]).textContent)
-    }
-    
-    for (var i=0; i<4; i++){
-        buttons[4*(numGroups-1)+i].textContent=words[i]
-        //let cols = catTable.getElementsByTagName('td');
-        if (numEach[0]==4){
-            buttons[4*(numGroups-1)+i].style.backgroundColor='#FDDA0D';
-            //cols[numGroups-1].style.backgroundColor='#FDDA0D'
-            //cols[numGroups-1].innerHTML=groupNames[0]
-            label.style.color='#FDDA0D'
-        }
-        if (numEach[1]==4){
-            buttons[4*(numGroups-1)+i].style.backgroundColor='#50C878';
-            //cols[numGroups-1].style.backgroundColor='#50C878'
-            //cols[numGroups-1].innerHTML=groupNames[1]
-            label.style.color='#50C878'
-        }
-        if (numEach[2]==4){
-            buttons[4*(numGroups-1)+i].style.backgroundColor='#6495ED';
-            //cols[numGroups-1].style.backgroundColor='#6495ED'
-            //cols[numGroups-1].innerHTML=groupNames[2]
-            label.style.color='#6495ED'
-        }
-        if (numEach[3]==4){
-            buttons[4*(numGroups-1)+i].style.backgroundColor='#BF40BF';
-            //cols[numGroups-1].style.backgroundColor='#BF40BF'
-            //cols[numGroups-1].innerHTML=groupNames[3]
-            label.style.color='#BF40BF'
-        }
+    // Clear the first row
+    while (row.firstChild) {
+        row.removeChild(row.firstChild);
     }
 
-    for (let i = 0; i < buttons.length-4*numGroups; i++) {
-        let rowIndex = Math.floor(i / 4); // Calculate the row index for each button
-        buttons[i+4*numGroups].textContent = activeWords[rowIndex * 4 + i % 4];
-        buttons[i+4*numGroups].style.backgroundColor= '#DCDCDC'
+    // Create a new cell that spans all columns
+    const mergedCell = document.createElement('td');
+    mergedCell.colSpan = 4; // Merge all four columns
+    mergedCell.style.textAlign = "center"; // Center the text
+    mergedCell.style.backgroundColor=colors[cat]
+    let header = document.createElement("h1");
+    let wordLabel = document.createElement('label')
+    header.innerHTML=groupNames[cat]
+    wordLabel.innerHTML=groups[cat][0]+", "+groups[cat][1]+", "+groups[cat][2]+", "+groups[cat][3]
+    wordLabel.style.fontSize='18px'
+    mergedCell.appendChild(header)
+    mergedCell.appendChild(wordLabel)
+    let currentWidth = mergedCell.offsetWidth;
+    let newWidth = currentWidth - 20; // 10px smaller on each side (20px total)
+    mergedCell.style.width = `${newWidth}px`;
+
+    // Append the new cell to the first row
+    row.appendChild(mergedCell);
+    wordCount=0
+    for (var i=0; i< activeWords.length/4; i++){
+        rowindex=i+numGroups
+        nextRow=table.rows[rowindex]
+        for (var j=0; j<4; j++){
+            cell = nextRow.cells[j]
+            var button = cell.querySelector("button");
+            button.textContent = activeWords[wordCount];
+            wordCount++
+            button.style.backgroundColor= '#DCDCDC'
+        }
+
     }
+
+
 }
 
 
