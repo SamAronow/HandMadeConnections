@@ -45,14 +45,15 @@ var guessString="My Results For "+puzName+"\n"
     table = document.getElementById('board');
     //catTable = document.getElementById('cats')
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+    const board = document.getElementById('board');
     if (isPortrait){
         table.addEventListener('touchend', handleBoardClick);
         const width = window.innerWidth;
-        printError(width+"")
-        const board = document.getElementById('board');
-        board.style.width='250px'
+        printError("new")
+        board.style.setProperty('width', '200px', 'important');
     }
     else{
+        board.style.setProperty('width', '600px', 'important');
         table.addEventListener('click', handleBoardClick);
     }
     activeWords=shuffleArray(activeWords)

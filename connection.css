@@ -9,7 +9,6 @@ body {
 }
 
 #board {
-    width: 600px;
     height: 600px;
     border-collapse: collapse;
     border: 2px solid black;
