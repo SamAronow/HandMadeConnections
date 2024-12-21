@@ -112,14 +112,18 @@ td {
     }
 
     #board {
-        width: 80%; /* Make board fit well in portrait mode */
+        width: 400px; /* Make board fit well in portrait mode */
         height: auto;
     }
 
     .tbut {
-        width: 50px;  /* Adjust button size for portrait */
-        height: 50px;
+        width: 75px;  /* Adjust button size for portrait */
+        height: 75px;
         color: black
+    }
+    td{
+        width: 75px;  /* Adjust button size for portrait */
+        height: 75px;
     }
 
     #submit {
