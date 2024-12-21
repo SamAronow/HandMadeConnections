@@ -48,8 +48,9 @@ var guessString="My Results For "+puzName+"\n"
     if (isPortrait){
         table.addEventListener('touchend', handleBoardClick);
         const width = window.innerWidth;
+        printError(width+"")
         const board = document.getElementById('board');
-        board.style.width=width/2
+        board.style.width='50px'
     }
     else{
         table.addEventListener('click', handleBoardClick);
