@@ -50,7 +50,7 @@ var guessString="My Results For "+puzName+"\n"
         const width = window.innerWidth;
         printError(width+"")
         const board = document.getElementById('board');
-        board.style.width='50px'
+        board.style.width='250px'
     }
     else{
         table.addEventListener('click', handleBoardClick);
