@@ -40,7 +40,8 @@ td {
     align-items: center;
     text-align: center;
     width: 110px; /* Fill the width of the cell */
-    height: 110px;   
+    height: 110px;  
+    min-width: 110px;  
 }
 
 .tbut {

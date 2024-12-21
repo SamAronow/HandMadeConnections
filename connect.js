@@ -47,14 +47,13 @@ var guessString="My Results For "+puzName+"\n"
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
     const game = document.getElementById('game');
     if (isPortrait){
-        const submitButton = document.getElementById('submit');
+        let submitButton = document.getElementById('submit');
         submitButton.onclick = null;
         submitButton.addEventListener('click', submit);
         table.addEventListener('click', handleBoardClick);
         const width = window.innerWidth;
         //game.style.width=width+'px'
         //game.style.height=width+'px'
-        printError(width+"")
     }
     else{
        // board.style.width='600px'
@@ -208,25 +207,33 @@ function makeBoard(numEach, label) {
     while (row.firstChild) {
         row.removeChild(row.firstChild);
     }
+    mergeDiv=document.createElement('div')
+    mergeCell = document.createElement('td');
 
-    // Create a new cell that spans all columns
-    const mergedCell = document.createElement('td');
-    mergedCell.colSpan = 4; // Merge all four columns
-    mergedCell.style.textAlign = "center"; // Center the text
-    mergedCell.style.backgroundColor=colors[cat]
+    mergeCell.colSpan = 4; // Merge all four columns
+    mergeCell.style.textAlign = "center"; // Center the text
+
+    mergeDiv.style.backgroundColor=colors[cat]
     let header = document.createElement("h1");
     let wordLabel = document.createElement('label')
     header.innerHTML=groupNames[cat]
     wordLabel.innerHTML=groups[cat][0]+", "+groups[cat][1]+", "+groups[cat][2]+", "+groups[cat][3]
     wordLabel.style.fontSize='18px'
-    mergedCell.appendChild(header)
-    mergedCell.appendChild(wordLabel)
-    let currentWidth = mergedCell.offsetWidth;
-    let newWidth = currentWidth - 20; // 10px smaller on each side (20px total)
-    mergedCell.style.width = `${newWidth}px`;
-
+    mergeDiv.appendChild(header)
+    mergeDiv.appendChild(wordLabel)// Or use a specific container like document.getElementById('container')
+    mergeCell.appendChild(mergeDiv)
+    row.appendChild(mergeCell);
+    mergeCell.style.height = '100%';
+    mergeDiv.style.borderRadius='10px'
+    mergeDiv.style.height = '100%';
+    width=table.rows[3].cells[0].offsetWidth;
+    if (numGroups==4){
+        table.rows[0].cells[0].style.width=width*4+'px'
+        table.rows[1].cells[0].style.width=width*4+'px'
+        table.rows[2].cells[0].style.width=width*4+'px'
+        table.rows[3].cells[0].style.width=width*4+'px'
+    }
     // Append the new cell to the first row
-    row.appendChild(mergedCell);
     wordCount=0
     for (var i=0; i< activeWords.length/4; i++){
         rowindex=i+numGroups
@@ -240,12 +247,19 @@ function makeBoard(numEach, label) {
         }
 
     }
+}
 
-
+function reOpenPopup() {
+    document.getElementById("popup").style.display = "block";
 }
 
 
 function openPopup() {
+    let submitButton = document.getElementById('submit');
+    submitButton.innerHTML="View Results"
+    submitButton.onclick = null;
+    submitButton.addEventListener('click', reOpenPopup);
+
     document.getElementById("popup").style.display = "block";
     let container = document.getElementById('stats');
     tot_attempts+=numWrong
