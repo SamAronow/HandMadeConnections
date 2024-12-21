@@ -33,8 +33,12 @@ var table
 var buttons
 var catTable
 var guesses=[]
-var guessString=""
+var guessString="My Results For "+puzName
   function initialize(){
+    let container = document.getElementById('stats');
+    let label = document.createElement('label')
+    label.innerHTML="Results for "+puzName
+    container.append(label)
     activeWords= [].concat(...groups);
 
     clicked = []
@@ -248,7 +252,6 @@ function openPopup() {
     let label1 = document.createElement('label')
     let label2 = document.createElement('label')
     let label3 = document.createElement('label')
-    let lnbreak = document.createElement('br')
     label1.innerHTML="Total Puzzle Wins: "+tot_wins
     label2.innerHTML="Average Puzzle Wrong Guesses: "+avg
     label3.innerHTML="Your Wrong Guesses: "+numWrong
