@@ -49,11 +49,14 @@ var guessString="My Results For "+puzName+"\n"
     if (isPortrait){
         table.addEventListener('touchend', handleBoardClick);
         const width = window.innerWidth;
-        printError("new")
-        board.style.setProperty('width', '200px', 'important');
+        printError("newm")
+        board.style.width='200px'
+        board.style.height='200px'
     }
     else{
-        board.style.setProperty('width', '600px', 'important');
+        printError("newl")
+        board.style.width='600px'
+        board.style.height='600px'
         table.addEventListener('click', handleBoardClick);
     }
     activeWords=shuffleArray(activeWords)

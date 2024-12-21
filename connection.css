@@ -9,7 +9,6 @@ body {
 }
 
 #board {
-    height: 600px;
     border-collapse: collapse;
     border: 2px solid black;
     table-layout: fixed; /* Ensures uniform cell size */
@@ -111,7 +110,7 @@ td {
     }
 
     #board {
-        height: auto;
+        
     }
 
     .tbut {
