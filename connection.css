@@ -111,8 +111,10 @@ td {
     body {
         font-size: 16px;  /* Adjust font size for portrait */
     }
-
-
+    #board{
+        width: 100%;
+        height: 100%;
+    }
 
     .tbut {
         width: 70px;  /* Adjust button size for portrait */
