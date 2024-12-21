@@ -34,7 +34,7 @@ var buttons
 var catTable
 var guesses=[]
 var guessString="My Results For "+puzName+"\n"
-const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+let isPortrait = window.matchMedia("(orientation: portrait)").matches;
   function initialize(){
     activeWords= [].concat(...groups);
 
