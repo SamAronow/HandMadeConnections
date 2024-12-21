@@ -16,6 +16,7 @@ read("/Puzzles/"+puzName)
     groupNames=data[4]
     tot_wins=data.Wins
     tot_attempts=data.Attempts
+
     initialize()
   })
   .catch(function(error) {
@@ -32,6 +33,7 @@ var table
 var buttons
 var catTable
 var guesses=[]
+var guessString=""
   function initialize(){
     activeWords= [].concat(...groups);
 
@@ -109,13 +111,20 @@ function submit(){
             }
         }
     }
+    var curGuess=""
     guesses.push(entries)
-    let string
+    displays = ["🟨","🟩","🟦","🟪"]
+    for (var i=0; i<4; i++){
+        for (var j=0; j< numEach[i]; j++){
+            curGuess+=displays[i]
+        }
+    }
+    guessString+=curGuess+"\n"
     let container = document.getElementById('guessList');
     let label =document.createElement('label')
-    var i=guesses.length-1
-    string = "Guess "+(i+1)+": "+guesses[i][0]+", "+guesses[i][1]+", "+guesses[i][2]+", "+guesses[i][3]+";"
-    label.innerHTML=string
+    label.innerHTML=curGuess
+    label.style.fontSize = '22px';
+    label.style.textAlign = 'center';
     container.appendChild(label)
     let lineBreak = document.createElement('br');
     container.appendChild(lineBreak)
@@ -209,22 +218,45 @@ function makeBoard(numEach,label){
 
 function openPopup() {
     document.getElementById("popup").style.display = "block";
-    document.getElementById("guessDisplay").innerHTML="Wrong Guesses: "+numWrong
+    let container = document.getElementById('stats');
     tot_attempts+=numWrong
     tot_wins++
+    // Create the button
+    let button = document.createElement('button');
+    button.innerHTML = 'Copy to Clipboard';
+
+    // Add a click event listener
+    button.addEventListener('click', function() {
+    // String to copy
+    let stringToCopy = 'This is the string to copy!';
+    
+    // Use the Clipboard API
+    navigator.clipboard.writeText(guessString)
+        .catch(err => {
+            printError("Failed to copy text: ");
+        });
+    });
+
+// Add the button to the container
+    container.appendChild(button);
+    container.appendChild(document.createElement('br'))
+
+
     var avg = 1.0*tot_attempts/tot_wins
     write('/Puzzles/'+puzName+'/Attempts',tot_attempts)
     write('/Puzzles/'+puzName+'/Wins',tot_wins)
-    let container = document.getElementById('stats');
-    let label1 =document.createElement('label')
+    let label1 = document.createElement('label')
     let label2 = document.createElement('label')
+    let label3 = document.createElement('label')
     let lnbreak = document.createElement('br')
     label1.innerHTML="Total Puzzle Wins: "+tot_wins
     label2.innerHTML="Average Puzzle Wrong Guesses: "+avg
-    container.appendChild(label1)
-    container.appendChild(lnbreak)
-    container.appendChild(lnbreak)
+    label3.innerHTML="Your Wrong Guesses: "+numWrong
+    container.appendChild(label3)
+    container.appendChild(document.createElement('br'))
     container.appendChild(label2)
+    container.appendChild(document.createElement('br'))
+    container.appendChild(label1)
   }
   
   function closePopup() {
