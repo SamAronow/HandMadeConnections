@@ -16,6 +16,7 @@ body {
     table-layout: fixed; /* Ensures uniform cell size */
 }
 #cats{
+    display: none;
     width: 30px;
     height: 100px;
     border-collapse: collapse;
@@ -50,10 +51,23 @@ td {
 }
 
 #submit {
-    width:100px;
-    height:30px;
-    right: 30px;
+    width: 150px;
+    height: 50px;
+    margin: 5px; /* Adds some spacing around the button */
+    font-size:16px;
 }
+
+#game {
+    text-align: center; /* Center the content within the game div */
+}
+
+
+#lives {
+    text-align: center; /* Keeps the label next to the button */
+    margin-bottom: 10px; /* Adds spacing between button and label */
+    font-size: 25px;
+}
+
 #error-message {
     display: none;
     position: fixed;

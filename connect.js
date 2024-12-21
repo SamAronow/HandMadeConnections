@@ -33,12 +33,8 @@ var table
 var buttons
 var catTable
 var guesses=[]
-var guessString="My Results For "+puzName
+var guessString="My Results For "+puzName+"\n"
   function initialize(){
-    let container = document.getElementById('stats');
-    let label = document.createElement('label')
-    label.innerHTML="Results for "+puzName
-    container.append(label)
     activeWords= [].concat(...groups);
 
     clicked = []
@@ -100,6 +96,7 @@ function rgbToHex(rgb) {
     return `#${values.map(val => parseInt(val, 10).toString(16).padStart(2, '0')).join('')}`;
   }
 
+  count=0
 function submit(){
     var numEach=[0,0,0,0]
     if (clicked.length!=4){
@@ -129,6 +126,15 @@ function submit(){
     label.innerHTML=curGuess
     label.style.fontSize = '22px';
     label.style.textAlign = 'center';
+    if (count==0){
+        let label2=document.createElement('label')
+        label2.style.fontSize = '22px';
+        label2.innerHTML="Results for " +puzName
+        container.appendChild(label2)
+        container.appendChild(document.createElement('br'))
+        count++
+    }
+
     container.appendChild(label)
     let lineBreak = document.createElement('br');
     container.appendChild(lineBreak)
